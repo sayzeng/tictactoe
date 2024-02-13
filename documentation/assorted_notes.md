@@ -5,13 +5,13 @@
 <br>
 
 # To Do
-- fix isVerticalWinGrid()
-- fix isDiagonalWinGrid()
+- ~~fix isVerticalWinGrid()~~
+- ~~fix isDiagonalWinGrid()~~
 - add bot option
+- ~~fix switch player: bug is that player O goes twice~~
+- add current player indicator
 
-- Display
-    - add current player indicator
-    - ~~remove alternative move entry method (or build it)~~
+- ~~remove alternative move entry method (or build it)~~
 - JS: fix init of TicTacToeMove class to get coordinates
 - ~~think through where to put the logic of making a move~~
 - add game reset option

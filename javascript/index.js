@@ -16,7 +16,9 @@ class TicTacToeSession {
                 //this.currentScore.updateScoreBoard(this.currentGame.getWinner());
 
                 // display game over message -> modal?
-                console.log('game over');
+                const gameOverMessage = `Game Over: ${this.currentGame.getWinner()} wins!`;
+                document.getElementById('game-status').innerText = gameOverMessage;
+                console.log(gameOverMessage);
 
                 this.disableGridButtons();
             }
@@ -81,6 +83,9 @@ class TicTacToeGame {
         if (!this.isGameOver()) {
             this.switchCurrentPlayer();
         }
+        else {
+            this.winner = this.currentPlayer;
+        }
     }
 
     switchCurrentPlayer() {
@@ -104,22 +109,22 @@ class TicTacToeGrid {
         return this.grid;
     }
 
-    getRemainingValidPositions() {
-        let output = [];
-        this.grid.forEach((row, rowIndex) => {
-            row.forEach((col, colIndex) => {
-                if (col === null) {
-                    output.push(TicTacToeMove([rowIndex, colIndex])); // this will not work, must input slug
-                }
-            })
-        })
-    }
+    // getRemainingValidPositions() {
+    //     let output = [];
+    //     this.grid.forEach((row, rowIndex) => {
+    //         row.forEach((col, colIndex) => {
+    //             if (col === null) {
+    //                 output.push(TicTacToeMove([rowIndex, colIndex])); // this will not work, must input slug
+    //             }
+    //         })
+    //     })
+    // }
 
-    getRandomValidPosition() {
-        optionPool = this.getRemainingValidPositions();
+    // getRandomValidPosition() {
+    //     optionPool = this.getRemainingValidPositions();
     
-        // return random position from optionPool
-    }
+    //     // return random position from optionPool
+    // }
 
     updateGrid(ticTacToeMove, currentPlayer) {
         this.pastMoves.push(ticTacToeMove);
@@ -145,27 +150,32 @@ class TicTacToeGrid {
     }
 
     isVerticalWinGrid() {
-        // fix this
         for (let c = 0; c < this.grid.length; c++) {
-            // return first truthy value
-            this.grid.every((row) => {
-                return row[c] !== null && row[c] === row[0][c];
+            let isSameOnVertical = this.grid.every((row) => {
+                return row[c] !== null && row[c] === this.grid[0][c];
             });
+            
+            if (isSameOnVertical) return true;
         };
+
+        return false;
     }
 
     isDiagonalWinGrid() {
-        // refine this
-        // for (let i = 0; i < this.grid.length; i++) {
-            // this.grid[i][i] === this.grid[0][0] 
-        // }
+        let backSlash = this.grid.every((row, index) => {
+            return row[index] !== null && row[index] === this.grid[0][0];
+        });
 
-        return this.grid[0][0] === this.grid[1][1] === this.grid[2][2] || this.grid[0][2] === this.grid[1][1] === this.grid[2][0];
+        let forwardSlash = this.grid.every((row, index) => {
+            return row[this.grid.length - 1 - index] !== null && row[this.grid.length - 1 - index] === this.grid[0][this.grid.length - 1];;
+        });
+
+        return backSlash || forwardSlash;
     }
 }
 
 class TicTacToeMove {
-    constructor(slug) {      // check syntax -- need to init with running getCoordinates
+    constructor(slug) {      // check syntax -- want to init with running getCoordinates
         this.slug = slug;
         this.coordinates = [];
     }
