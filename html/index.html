@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Tic-Tac-Toe</title>
+    <script src="../javascript/index.js"></script>
+</head>
+
+<body>
+    <h1>Tic-Tac-Toe</h1>
+
+    <section id="messages">
+
+        <p id="display-current-player">Current player:</p>
+
+        <p id="game-status"> </p>
+
+    </section>
+
+    <br>
+
+    <section id="game-grid">
+        <table border="1">
+            <tr>
+                <td></td>
+                <td width="50px">1</td>
+                <td width="50px">2</td>
+                <td width="50px">3</td>
+            </tr>
+
+            <tr height="50px">
+                <td>A</td>
+                <td><input id="a1" type="button" value=" " onclick="currentSession.submitMove('a1')"></input></td>
+                <td><input id="a2" type="button" value=" " onclick="currentSession.submitMove('a2')"></input></td>
+                <td><input id="a3" type="button" value=" " onclick="currentSession.submitMove('a3')"></input></td>
+            </tr>
+
+            <tr height="50px">
+                <td>B</td>
+                <td><input id="b1" type="button" value=" " onclick="currentSession.submitMove('b1')"></input></td>
+                <td><input id="b2" type="button" value=" " onclick="currentSession.submitMove('b2')"></input></td>
+                <td><input id="b3" type="button" value=" " onclick="currentSession.submitMove('b3')"></input></td>
+            </tr>
+
+            <tr height="50px">
+                <td>C</td>
+                <td><input id="c1" type="button" value=" " onclick="currentSession.submitMove('c1')"></input></td>
+                <td><input id="c2" type="button" value=" " onclick="currentSession.submitMove('c2')"></input></td>
+                <td><input id="c3" type="button" value=" " onclick="currentSession.submitMove('c3')"></input></td>
+            </tr>
+            
+        </table>
+
+    </section>
+
+    <section id="user-interaction">
+        <!-- reset game -->
+        <!-- reset scoreboard -->
+        <!-- toggle play with bot -->
+    </section>
+
+    <br>
+
+    <section id="scoreboard">
+        <h2>Scoreboard</h2>
+        <table border="1">
+            <tr>
+                <td>Player X</td>
+                <td>Player O</td>
+                <td>Draws</td>
+            </tr>
+            <tr>
+                <td id="display-x-wins">0</td>
+                <td id="display-o-wins">0</td>
+                <td id="display-draws">0</td>
+            </tr>
+        </table>
+    </section>
+
+</body>
+
+</html>
