@@ -10,6 +10,7 @@
 - add scoreboard reset option
 - add toggle for playing against a bot
 - scoreboard: updateScoreBoard()
+- update game over message to account for draws
 
 - ~~fix isVerticalWinGrid()~~
 - ~~fix isDiagonalWinGrid()~~

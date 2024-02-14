@@ -169,7 +169,7 @@ class TicTacToeGrid {
     }
 
     isDrawGrid() {
-        this.pastMoves.length === 9 && !this.isWinGrid();
+        return this.pastMoves.length === 9 && !this.isWinGrid();
     }
 
     isHorizontalWinGrid() {
