@@ -5,28 +5,47 @@ class TicTacToeSession {
     }
 
     submitMove(slug) {
-        let newMove = new TicTacToeMove(slug); // this part isn't working
+        let newMove = new TicTacToeMove(slug);
         newMove.getCoordinates(); // fix this, want to make part of init
 
         if (newMove.isValidMove(this.currentGame)) {
-            this.updateButton(slug); // need to update button before switching players
-            this.currentGame.makeMove(newMove);
-
-            if (this.currentGame.isGameOver()) {
-                //this.currentScore.updateScoreBoard(this.currentGame.getWinner());
-
-                // display game over message -> modal?
-                const gameOverMessage = `Game Over: ${this.currentGame.getWinner()} wins!`;
-                document.getElementById('game-status').innerText = gameOverMessage;
-                console.log(gameOverMessage);
-
-                this.disableGridButtons();
-            }
+            this.makeMove(newMove);
         }
         else {
             console.log('invalid move');
             // invalid move message -> modal?
         }
+    }
+
+    makeMove(newMove) {
+        this.updateButton(newMove.getSlug()); // need to update button before switching players
+        this.currentGame.makeMove(newMove);
+        this.checkGameOver();
+    }
+
+    makeBotMove() {
+        const randomSlug = this.getSlug(this.currentGame.getRandomValidPosition());
+        
+        const botMove = new TicTacToeMove(randomSlug);
+        botMove.getCoordinates();
+
+        this.makeMove(botMove);
+    }
+
+    checkGameOver() {
+        if (this.currentGame.isGameOver()) {
+            //this.currentScore.updateScoreBoard(this.currentGame.getWinner());
+
+            // display game over message -> modal?
+            const gameOverMessage = `Game Over: ${this.currentGame.getWinner() || 'No one'} wins!`;
+            document.getElementById('game-status').innerText = gameOverMessage;
+            console.log(gameOverMessage);
+
+            this.disableAllGridButtons();
+        }
+        // else if (document.getElementById('play-with-bot-checkbox').checked) {
+        //     this.currentGame.makeBotMove();
+        // }
     }
 
     updateButton(slug) {
@@ -35,12 +54,18 @@ class TicTacToeSession {
         buttonElement.disabled = true;
     }
 
-    disableGridButtons() {
+    disableAllGridButtons() {
         const buttonSlugs = ['a1', 'a2', 'a3', 'b1', 'b2', 'b3', 'c1', 'c2', 'c3'];
 
         buttonSlugs.forEach((slug) => {
             document.getElementById(slug).disabled = true;
         });
+    }
+
+    getSlug(coordinates) {
+        const rowLabel = coordinates[0] === 0 ? 'a' : coordinates[0] === 1 ? 'b' : 'c';
+        const colLabel = coordinates[1] + 1;
+        return rowLabel + colLabel;
     }
 
     resetGame() {
@@ -88,8 +113,29 @@ class TicTacToeGame {
         }
     }
 
+    getRemainingValidPositions() {
+        let output = [];
+        
+        this.grid.getGrid().forEach((row, rowIndex) => {  // throwing bug here
+            row.forEach((cell, colIndex) => {
+                if (cell === null) {
+                    output.push([rowIndex, colIndex]);
+                }
+            })
+        })
+
+        return output;
+    }
+
+    getRandomValidPosition() {
+        const optionPool = this.getRemainingValidPositions();
+        return optionPool[Math.floor(Math.random() * optionPool.length)];
+    }
+
     switchCurrentPlayer() {
         this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
+
+        document.getElementById('display-current-player').textContent = `Current Player: ${this.currentPlayer}`;
     }
 
 }
@@ -109,26 +155,9 @@ class TicTacToeGrid {
         return this.grid;
     }
 
-    // getRemainingValidPositions() {
-    //     let output = [];
-    //     this.grid.forEach((row, rowIndex) => {
-    //         row.forEach((col, colIndex) => {
-    //             if (col === null) {
-    //                 output.push(TicTacToeMove([rowIndex, colIndex])); // this will not work, must input slug
-    //             }
-    //         })
-    //     })
-    // }
-
-    // getRandomValidPosition() {
-    //     optionPool = this.getRemainingValidPositions();
-    
-    //     // return random position from optionPool
-    // }
-
-    updateGrid(ticTacToeMove, currentPlayer) {
-        this.pastMoves.push(ticTacToeMove);
-        this.grid[ticTacToeMove.coordinates[0]][ticTacToeMove.coordinates[1]] = currentPlayer;
+    updateGrid(move, currentPlayer) {
+        this.pastMoves.push(move);
+        this.grid[move.coordinates[0]][move.coordinates[1]] = currentPlayer;
     }
 
     isGameOverGrid() {
@@ -180,6 +209,10 @@ class TicTacToeMove {
         this.coordinates = [];
     }
 
+    getSlug() {
+        return this.slug;
+    }
+
     getCoordinates() {
         const row_coordinates = this.slug[0] === 'a' ? 0 : this.slug[0] === 'b' ? 1 : 2;
         const col_coordinates = this.slug[1] - 1;
@@ -192,9 +225,7 @@ class TicTacToeMove {
     isValidMove(currentGame) {
         return currentGame.getGameBoardGrid()[this.coordinates[0]][this.coordinates[1]] === null;
     }
-
 }
-
 
 class ScoreBoard {
     constructor() {
