@@ -108,7 +108,7 @@ class TicTacToeGame {
         if (!this.isGameOver()) {
             this.switchCurrentPlayer();
         }
-        else {
+        else if (this.grid.isWinGrid()) {
             this.winner = this.currentPlayer;
         }
     }
