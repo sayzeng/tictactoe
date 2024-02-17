@@ -34,7 +34,7 @@ class TicTacToeSession {
 
     checkGameOver() {
         if (this.currentGame.isGameOver()) {
-            //this.currentScore.updateScoreBoard(this.currentGame.getWinner());
+            this.currentScore.updateScoreBoard(this.currentGame.getWinner());
 
             // display game over message -> modal?
             const gameOverMessage = `Game Over: ${this.currentGame.getWinner() || 'No one'} wins!`;
@@ -84,6 +84,8 @@ class TicTacToeSession {
 
     resetScoreBoard() {
         this.currentScore = new ScoreBoard();
+        this.currentScore.syncDisplayedScoreBoard();
+        this.resetGame();
     }
 }
 
@@ -247,24 +249,21 @@ class ScoreBoard {
     updateScoreBoard(winner) {
         if (winner === 'X') {
             this.playerXWins++;
-            document.getElementById('display-x-wins').textContent=this.playerXWins;
         }
         else if (winner === 'O') {
             this.playerOWins++;
-            document.getElementById('display-o-wins').textContent=this.playerOWins;
         }
         else {
             this.draws++;
-            document.getElementById('display-draws').textContent=this.draws;
         }
+
+        this.syncDisplayedScoreBoard();
     }
 
-    getScoreBoard() {
-        return {
-            xWins: this.playerXWins,
-            oWins: this.playerOWins,
-            draws: this.draws
-        };
+    syncDisplayedScoreBoard() {
+        document.getElementById('display-x-wins').textContent=this.playerXWins;
+        document.getElementById('display-o-wins').textContent=this.playerOWins;
+        document.getElementById('display-draws').textContent=this.draws;
     }
 
 }
