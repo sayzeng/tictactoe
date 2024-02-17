@@ -12,6 +12,7 @@
     <section id="messages">
 
         <p id="game-status"> </p>
+        <p id="display-current-player">Current Player: X</p>
 
     </section>
 
@@ -54,13 +55,10 @@
     <br>
 
     <section id="game-options">
-        <p id="display-current-player"></p>
-        <br>
         <input id="random-move-button" type="button" onclick="currentSession.makeBotMove()" value="Make random move"></input>
-
         <!-- input id="play-with-bot-checkbox" type="checkbox" value="Play with bot">Play with bot</input -->
         <br>
-        <input id="reset-game-button" type="button" value="Reset game"></input>
+        <input id="reset-game-button" type="button" value="Reset game" onclick="currentSession.resetGame()"></input>
         <br>
         <input id="reset-scoreboard-button" type="button" value="Reset scoreboard"></input>
     </section>

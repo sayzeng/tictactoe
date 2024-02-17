@@ -42,10 +42,8 @@ class TicTacToeSession {
             console.log(gameOverMessage);
 
             this.disableAllGridButtons();
+            document.getElementById('random-move-button').disabled = true;
         }
-        // else if (document.getElementById('play-with-bot-checkbox').checked) {
-        //     this.currentGame.makeBotMove();
-        // }
     }
 
     updateButton(slug) {
@@ -62,6 +60,16 @@ class TicTacToeSession {
         });
     }
 
+    resetAllGridButtons() {
+        const buttonSlugs = ['a1', 'a2', 'a3', 'b1', 'b2', 'b3', 'c1', 'c2', 'c3'];
+
+        buttonSlugs.forEach((slug) => {
+            const buttonElement = document.getElementById(slug);
+            buttonElement.value = ' ';
+            buttonElement.disabled = false;
+        });
+    }
+
     getSlug(coordinates) {
         const rowLabel = coordinates[0] === 0 ? 'a' : coordinates[0] === 1 ? 'b' : 'c';
         const colLabel = coordinates[1] + 1;
@@ -69,6 +77,8 @@ class TicTacToeSession {
     }
 
     resetGame() {
+        this.resetAllGridButtons();
+        document.getElementById('random-move-button').disabled = false;
         this.currentGame = new TicTacToeGame();
     }
 
