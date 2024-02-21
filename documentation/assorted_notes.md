@@ -5,20 +5,23 @@
 <br>
 
 # To Do
-- ~~fix isVerticalWinGrid()~~
-- ~~fix isDiagonalWinGrid()~~
-- add bot option
-- ~~fix switch player: bug is that player O goes twice~~
-- add current player indicator
-
-- ~~remove alternative move entry method (or build it)~~
-- JS: fix init of TicTacToeMove class to get coordinates
-- ~~think through where to put the logic of making a move~~
+- clean up duplicate names (makeMove, getSlug)
 - add game reset option
 - add scoreboard reset option
 - add toggle for playing against a bot
 - scoreboard: updateScoreBoard()
+- update game over message to account for draws
 
+- ~~fix isVerticalWinGrid()~~
+- ~~fix isDiagonalWinGrid()~~
+- ~~change bot option to generate random move option~~
+    - ~~make html button~~
+    - ~~write code to make it work~~
+        - ~~move makeBotMove into Session class~~
+- ~~fix switch player: bug is that player O goes twice~~
+- ~~add current player indicator~~
+- ~~remove alternative move entry method (or build it)~~
+- ~~think through where to put the logic of making a move~~
 
 
 <br>
@@ -35,6 +38,13 @@
 
 
 ## HTML
+
+
+- input button vs button element:
+    - https://stackoverflow.com/questions/469059/button-vs-input-type-button-which-to-use
+    - http://web.archive.org/web/20110721191046/http://particletree.com/features/rediscovering-the-button-element/
+
+
 
 ### References
 - https://developer.mozilla.org/en-US/docs/Web/HTML
