@@ -1,9 +1,21 @@
 # Goals
 
-- 
+- Build a FE app
+- Learn FE testing framework
+- Learn Vue FE
+- Build a Kotlin, Java, Python, or NodeJS BE server with a CRUD REST API
+- Build a PostgreSQL database
 
 
 ## Timeline
+
+### Week of Feb 26
+- install nvm (Node version manager)
+- `npm init -y` on repo
+- read Getting Started docs for vitest: https://vitest.dev/guide/
+- Write tests that test every part of `TicTacToeSession.submitMove`
+    - mock `TicTacToeSession` class where `makeMove` is the only true function, others are empty functions
+    - Make function that will return an example DOM
 
 ### Week of Feb 19
 - working/interactive grid
