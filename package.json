@@ -1,0 +1,12 @@
+{
+  "name": "tictactoe",
+  "version": "1.0.0",
+  "description": "Tic-Tac-Toe is a two-player game where each player places marks on a 3x3 grid until one player gets three marks in a row (horizontally, vertically, or diagonally) or all positions are filled.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Sarah Zeng",
+  "license": "ISC"
+}
