@@ -10,11 +10,11 @@
 ## Timeline
 
 ### Week of Feb 26
-- install nvm (Node version manager)
-- `npm init -y` on repo
+- install nvm (Node version manager) -> done
+- `npm init -y` on repo -> done (required uninstalling and reinstalling nvm)
 - read Getting Started docs for vitest: https://vitest.dev/guide/
 - Write tests that test every part of `TicTacToeSession.submitMove`
-    - mock `TicTacToeSession` class where `makeMove` is the only true function, others are empty functions
+    - mock `TicTacToeSession` class where `submitMove` is the only true function, others are empty functions
     - Make function that will return an example DOM
 
 ### Week of Feb 19
