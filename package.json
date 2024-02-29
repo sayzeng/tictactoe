@@ -4,7 +4,7 @@
   "description": "Tic-Tac-Toe is a two-player game where each player places marks on a 3x3 grid until one player gets three marks in a row (horizontally, vertically, or diagonally) or all positions are filled.",
   "main": "index.js",
   "scripts": {
-    "test": "vitest"
+    "test": "vitest --coverage"
   },
   "keywords": [],
   "author": "Sarah Zeng",
