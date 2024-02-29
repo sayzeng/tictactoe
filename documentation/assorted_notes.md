@@ -1,7 +1,9 @@
 # Questions
-- what does it mean when a "package is looking for funding"?
+- ~~what does it mean when a "package is looking for funding"?~~ -> literal $$$ funding
 - what is a callback?
-- vitest is unrecognised command in shell, npm vitest -v works, npx vitest -v, 
+    - pass function from another entity to have that function to call something at a later point (functional programming)
+- convention for test files
+- ~~vitest is unrecognised command in shell, npm vitest -v works, npx vitest -v, ~~
 - ~~Writing tests for JavaScript: test frameworks~~
 
 <br>
@@ -43,12 +45,17 @@
 
 - Javascript indexing starts at 0 (like Python)
 
+- implicit return:
+        const func = () => 'hi';
+        console.log(func());
+
 ### Testing with `vitest`
 - `npm run test`
 
 - vi.fn vs vi.spyOn
     - vi.fn: create mock function to track its execution
     - vi.spyOn: track a method on an already created object
+
 
 
 ### References
