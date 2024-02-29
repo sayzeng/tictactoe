@@ -268,4 +268,4 @@ class ScoreBoard {
 
 }
 
-let currentSession = new TicTacToeSession();
+export { TicTacToeSession, TicTacToeMove};

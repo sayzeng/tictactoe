@@ -1,10 +1,23 @@
 # Questions
-- Writing tests for JavaScript: test frameworks
-- 
+- ~~what does it mean when a "package is looking for funding"?~~ -> literal $$$ funding
+- what is a callback?
+    - pass function from another entity to have that function to call something at a later point (functional programming)
+- convention for test files
+- ~~vitest is unrecognised command in shell, npm vitest -v works, npx vitest -v, ~~
+- ~~Writing tests for JavaScript: test frameworks~~
 
 <br>
 
 # To Do
+- ~~install nvm (Node version manager)~~
+- ~~`npm init -y` on repo~~ (required uninstalling and reinstalling nvm)
+- ~~read Getting Started docs for vitest: https://vitest.dev/guide/~~
+    - ~~install vitest~~
+- ~~Write tests that test every part of `TicTacToeSession.submitMove`~~
+    - mock `TicTacToeSession` class where `makeMove` is the only true function, others are empty functions
+    - Make function that will return an example DOM
+
+
 - clean up duplicate names (makeMove, getSlug)
 - add game reset option
 - add scoreboard reset option
@@ -32,10 +45,23 @@
 
 - Javascript indexing starts at 0 (like Python)
 
+- implicit return:
+        const func = () => 'hi';
+        console.log(func());
+
+### Testing with `vitest`
+- `npm run test`
+
+- vi.fn vs vi.spyOn
+    - vi.fn: create mock function to track its execution
+    - vi.spyOn: track a method on an already created object
+
+
+
 ### References
 - https://javascript.info/
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript
-
+- https://vitest.dev/api/
 
 ## HTML
 
@@ -49,7 +75,7 @@
 ### References
 - https://developer.mozilla.org/en-US/docs/Web/HTML
 
-
+- 
 
 
 

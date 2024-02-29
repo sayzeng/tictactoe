@@ -3,7 +3,11 @@
 
 <head>
     <title>Tic-Tac-Toe</title>
-    <script src="../javascript/index.js"></script>
+    <script type="module">
+        import {TicTacToeSession} from '../javascript/index.js';
+        window.currentSession = new TicTacToeSession();
+    </script>
+    
 </head>
 
 <body>
